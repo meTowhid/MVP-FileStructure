@@ -1,4 +1,4 @@
-# Android Studio Templates
+# MVP File Structure Template
 
 ### Installation
 
