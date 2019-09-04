@@ -1,0 +1,50 @@
+<template format="4"
+        revision="1"
+        name="MVP Structure"
+        description="Creates a new package and created necessary files followed by the MVP and DI design pattern">
+
+    <category value="MVP"/>
+
+    <parameter
+            id="initDagger"
+            name="Include Dagger"
+            type="boolean"
+            default="true"
+            help="If true, this activity will have Dagger initialized." />
+
+    <parameter
+            id="newActivity"
+            name="New Activity"
+            type="boolean"
+            default="false"
+            help="If true, this will create a new activity." />
+
+    <parameter
+        id="rootName"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Demo"
+        visibility="newActivity"
+        help="The name of the base activity class to create on" />
+   
+    <parameter
+        id="parentActivityClass"
+        name="Activity"
+        type="string"
+        constraints="activity|exists|nonempty"
+        default=""
+        visibility="!newActivity"
+        help="The hierarchical parent activity, used as the base class for MVP structure" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
