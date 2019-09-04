@@ -29,7 +29,7 @@ public class ${fileName}Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_account);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_${fileName?lower_case});
 
     <#if (initDagger)>  
         Dagger${fileName}Component.builder()

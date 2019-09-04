@@ -1,14 +1,15 @@
 package ${fullPackage}.mvp;
 
-<#if (parentActivityClass)??>
+<#if (parentActivityClass?has_content)>
 import ${parentActivityClass};
+<#else>
+import ${fullPackage}.${fileName}Activity;
 </#if>
 import com.shohoz.driver.BaseAppController;
 import ${fullPackage}.di.${fileName}Module;
 <#if (initDagger)>
 import ${fullPackage}.di.Dagger${fileName}Component;
 </#if>
-<#--  import ${fullPackage}.${fileName}Activity;  -->
 <#--  import com.shohoz.driver.databinding.Activity${fileName}Binding;  -->
 
 import javax.inject.Inject;

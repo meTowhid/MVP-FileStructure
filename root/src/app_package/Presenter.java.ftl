@@ -1,6 +1,10 @@
 package ${fullPackage}.mvp;
 
-import com.shohoz.driver.activity.${fileName}Activity;
+<#if (parentActivityClass?has_content)>
+import ${parentActivityClass};
+<#else>
+import ${fullPackage}.${fileName}Activity;
+</#if>
 import com.shohoz.driver.helper.CLog;
 import com.shohoz.driver.rx.RxSchedulers;
 

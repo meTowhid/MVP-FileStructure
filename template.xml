@@ -30,7 +30,7 @@
    
     <parameter
         id="parentActivityClass"
-        name="Activity"
+        name="Activity Name"
         type="string"
         constraints="activity|exists|nonempty"
         default=""

@@ -1,7 +1,9 @@
 package ${fullPackage}.di;
 
-<#if (parentActivityClass)??>
+<#if (parentActivityClass?has_content)>
 import ${parentActivityClass};
+<#else>
+import ${fullPackage}.${fileName}Activity;
 </#if>
 import ${fullPackage}.mvp.${fileName}Model;
 import ${fullPackage}.mvp.${fileName}Presenter;

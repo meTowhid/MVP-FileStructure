@@ -1,7 +1,10 @@
 package ${fullPackage}.di;
 
-<#--  import <#if (parentActivityClass)??>${parentActivityClass}<#else>${fullPackage}Activity</#if>;  -->
-import ${(parentActivityClass)!"${fullPackage}Activity"};
+<#if (parentActivityClass?has_content)>
+import ${parentActivityClass};
+<#else>
+import ${fullPackage}.${fileName}Activity;
+</#if>
 import ${fullPackage}.mvp.${fileName}Presenter;
 import ${fullPackage}.mvp.${fileName}View;
 import com.shohoz.driver.di.component.AppComponent;

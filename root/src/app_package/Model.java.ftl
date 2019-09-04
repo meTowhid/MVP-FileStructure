@@ -1,9 +1,10 @@
 package ${fullPackage}.mvp;
 
-<#if (parentActivityClass)??>
+<#if (parentActivityClass?has_content)>
 import ${parentActivityClass};
+<#else>
+import ${fullPackage}.${fileName}Activity;
 </#if>
-<#--  import com.shohoz.driver.activity.${fileName}Activity;  -->
 import com.shohoz.driver.retrofit.ApiInterface;
 import com.shohoz.driver.utilities.NetworkUtils;
 
