@@ -11,12 +11,12 @@ import com.shohoz.driver.activity.BaseActivity;
 <#if (initDagger)>
 import ${fullPackage}.di.Dagger${fileName}Component;
 import ${fullPackage}.di.${fileName}Module;
+import javax.inject.Inject;
 </#if>
 import ${fullPackage}.mvp.${fileName}View;
 <#--  import com.shohoz.driver.databinding.Activity${fileName}Binding;  -->
 import com.shohoz.driver.helper.LocaleManager;
 
-import javax.inject.Inject;
 
 public class ${fileName}Activity extends BaseActivity {
 

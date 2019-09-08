@@ -34,8 +34,8 @@ public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
                 .observeOn(schedulers.androidThread())
                 .subscribe(response -> {
                     boolean isSuccess = response.isSuccessful() && response.body() != null;
-                    DummyData data = isSuccess ? response.body().getDummyData() : null;
-                    activity.view.onDataResponse(isSuccess, data);
+                    // DummyData data = isSuccess ? response.body().getDummyData() : null;
+                    // activity.view.onDataResponse(isSuccess, data);
                 }, throwable -> CLog.e(TAG, throwable.toString())));
     }
 }

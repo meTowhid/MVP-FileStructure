@@ -24,7 +24,7 @@ public class ${fileName}Model {
         return NetworkUtils.isNetworkAvailableObservable(${variableName}Activity);
     }
 
-    Observable<Response<DummyData>> getInfo() {
-        return apiInterface.getDummyInfo();
+    Observable<Response<?>> getInfo() {
+        return null;  //apiInterface.getDummyInfo();
     }
 }

@@ -19,7 +19,6 @@
 
   <open file="${dir}/mvp/${fileName}Presenter.java" />
   <open file="${dir}/mvp/${fileName}View.java" />
-  <open file="${dir}/di/${fileName}Component.java" />
   
 <#if (newActivity)>
   <open file="${dir}/${fileName}Activity.java" />
