@@ -7,6 +7,7 @@ import ${fullPackage}.${fileName}Activity;
 </#if>
 import com.shohoz.driver.helper.CLog;
 import com.shohoz.driver.rx.RxSchedulers;
+import com.shohoz.driver.utilities.Utilities;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -33,9 +34,15 @@ public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.androidThread())
                 .subscribe(response -> {
-                    boolean isSuccess = response.isSuccessful() && response.body() != null;
-                    // DummyData data = isSuccess ? response.body().getDummyData() : null;
-                    // activity.view.onDataResponse(isSuccess, data);
+                    if (response.code() == 401) {
+                        Utilities.logOutAndCloseApp(activity);
+                    } else if (response.code() == 413) {
+                        activity.showSnackBar(activity.mBinding.coordinatorLayout, "Request entity too large");
+                    } else {
+                        boolean isSuccess = response.isSuccessful() && response.body() != null;
+                        // DummyData data = isSuccess ? response.body().getDummyData() : null;
+                        // activity.view.onDataResponse(isSuccess, data);
+                    }
                 }, throwable -> CLog.e(TAG, throwable.toString())));
     }
 }

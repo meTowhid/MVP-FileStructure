@@ -10,7 +10,7 @@ public interface ${fileName}Contact {
     interface View extends BaseView {
         void bindView(Activity${fileName}Binding mBind);
 
-        void onDataResponse();
+        void onDataResponse(boolean isSuccess, Object data);
     }
 
     interface Presenter {

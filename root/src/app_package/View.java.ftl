@@ -37,10 +37,11 @@ public class ${fileName}View implements ${fileName}Contact.View {
 
     @Override
     public void onViewInit() {
-    }
+        presenter.getInfo();
+     }
 
     @Override
-    public void onDataResponse() {
+    public void onDataResponse(boolean isSuccess, Object data) {
     }
 
     @Override
