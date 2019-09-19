@@ -10,7 +10,7 @@ import ${fullPackage}.di.${fileName}Module;
 <#if (initDagger)>
 import ${fullPackage}.di.Dagger${fileName}Component;
 </#if>
-<#--  import com.shohoz.driver.databinding.Activity${fileName}Binding;  -->
+import com.shohoz.driver.databinding.Activity${fileName}Binding;
 
 import javax.inject.Inject;
 
@@ -22,7 +22,7 @@ public class ${fileName}View implements ${fileName}Contact.View {
 </#if>
     ${fileName}Presenter presenter;
 
-    private Activity${fileName}Binding mBinding;
+    private Activity${fileName}Binding binding;
     private ${fileName}Activity activity;
 
     public ${fileName}View(${fileName}Activity activity) {
@@ -41,12 +41,12 @@ public class ${fileName}View implements ${fileName}Contact.View {
      }
 
     @Override
-    public void onDataResponse(boolean isSuccess, Object data) {
+    public void onDataResponse(Object data) {
     }
 
     @Override
-    public void bindView(Activity${fileName}Binding mBinding) {
-        this.mBinding = mBinding;
+    public void bindView(Activity${fileName}Binding binding) {
+        this.binding = binding;
         onViewInit();
     }
 

@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable;
 
 
 public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
-    private static final String TAG = "${fileName}Presenter";
+    <#--  private static final String TAG = "${fileName}Presenter";  -->
     private CompositeDisposable compositeDisposable;
     private ${fileName}Activity activity;
     private RxSchedulers schedulers;
@@ -34,15 +34,9 @@ public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.androidThread())
                 .subscribe(response -> {
-                    if (response.code() == 401) {
-                        Utilities.logOutAndCloseApp(activity);
-                    } else if (response.code() == 413) {
-                        activity.showSnackBar(activity.mBinding.coordinatorLayout, "Request entity too large");
-                    } else {
-                        boolean isSuccess = response.isSuccessful() && response.body() != null;
-                        // DummyData data = isSuccess ? response.body().getDummyData() : null;
-                        // activity.view.onDataResponse(isSuccess, data);
-                    }
-                }, throwable -> CLog.e(TAG, throwable.toString())));
+                    if (response.isSuccessful() && response.body() != null) {
+                        activity.view.onDataResponse(response.body());
+                    } else activity.handleErrorResponse(response);
+                }, t -> activity.handleThrowable(t)));
     }
 }

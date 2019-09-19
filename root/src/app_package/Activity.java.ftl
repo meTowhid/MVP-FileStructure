@@ -24,12 +24,12 @@ public class ${fileName}Activity extends BaseActivity {
     @Inject
 </#if>
     public ${fileName}View view;
-    public Activity${fileName}Binding mBinding;
+    public Activity${fileName}Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_${fileName?lower_case});
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_${fileName?lower_case});
 
     <#if (initDagger)>  
         Dagger${fileName}Component.builder()
@@ -37,7 +37,7 @@ public class ${fileName}Activity extends BaseActivity {
                 .${variableName}Module(new ${fileName}Module(this))
                 .build().inject(this);
     </#if>
-        view.bindView(mBinding);
+        view.bindView(binding);
         initiateUI();
     }
 
