@@ -18,6 +18,17 @@ import javax.inject.Inject;
 
 public class ${fileName}View implements ${fileName}Contact.View {
 
+    /* ------ Activity Code ------
+    @Inject
+    public ${fileName}View view;
+    Dagger${fileName}Component.builder()
+            .appComponent(BaseAppController.getInstance().getAppComponent())
+            .${variableName}Module(new ${fileName}Module(this))
+            .build().inject(this);
+
+    view.bindView(binding);
+    */
+
 <#if (initDagger)>
     @Inject
 </#if>
