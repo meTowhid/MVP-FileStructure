@@ -9,6 +9,8 @@
         <#assign className = parentActivityClass?substring(parentActivityClass?last_index_of(".")+1) />
         <#if (className?ends_with("Activity"))>
             <#assign className = className?substring(0, className?length-8) />
+        <#elseif (className?starts_with("Activity"))>
+            <#assign className = className?substring(8) />
         </#if>
     <#else>
         <#assign className = rootName />
