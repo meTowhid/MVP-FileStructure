@@ -28,12 +28,14 @@ public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
 
     @Override
     public void getInfo() {
+        activity.view.onShowProgress();
         compositeDisposable.add(model.isNetworkAvailable().doOnNext(isNetAvailable -> {
         }).filter(isNetAvailable -> true)
                 .flatMap(isNetAvailable -> model.getInfo())
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.androidThread())
                 .subscribe(response -> {
+                    activity.view.onHideProgress();
                     if (response.isSuccessful() && response.body() != null) {
                         activity.view.onDataResponse(response.body());
                     } else activity.handleErrorResponse(response);

@@ -5,6 +5,7 @@ import ${parentActivityClass};
 <#else>
 import ${fullPackage}.${fileName}Activity;
 </#if>
+import com.shohoz.driver.helper.CustomDialog;
 import com.shohoz.driver.BaseAppController;
 import ${fullPackage}.di.${fileName}Module;
 <#if (initDagger)>
@@ -24,6 +25,7 @@ public class ${fileName}View implements ${fileName}Contact.View {
 
     private Activity${fileName}Binding binding;
     private ${fileName}Activity activity;
+    private CustomDialog progressDialog;
 
     public ${fileName}View(${fileName}Activity activity) {
         this.activity = activity;
@@ -57,8 +59,18 @@ public class ${fileName}View implements ${fileName}Contact.View {
     public void onHideAlert() {/**/}
 
     @Override
-    public void onShowProgress() {/**/}
+    public void onShowProgress() {
+        progressDialog = new CustomDialog(activity);
+        progressDialog.setCanceledOnTouchOutside(false);
+        if (!activity.isFinishing()) progressDialog.show();
+    }
 
     @Override
-    public void onHideProgress() {/**/}
+    public void onHideProgress() {
+        try {
+            if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
 }
