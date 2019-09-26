@@ -37,8 +37,11 @@ public class ${fileName}Presenter implements ${fileName}Contact.Presenter {
                 .subscribe(response -> {
                     activity.view.onHideProgress();
                     if (response.isSuccessful() && response.body() != null) {
-                        activity.view.onDataResponse(response.body());
+                        activity.view.onResponse(response.body());
                     } else activity.handleErrorResponse(response);
-                }, t -> activity.handleThrowable(t)));
+                }, t -> {
+                    activity.view.onHideProgress();
+                    activity.handleThrowable(t);
+                }));
     }
 }

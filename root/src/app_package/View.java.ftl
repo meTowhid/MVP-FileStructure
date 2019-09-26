@@ -26,7 +26,9 @@ public class ${fileName}View implements ${fileName}Contact.View {
             .${variableName}Module(new ${fileName}Module(this))
             .build().inject(this);
 
-    view.bindView(binding);
+        binding.setLifecycleOwner(this);
+        view.bindView(binding);
+        setCoordinatorLayout(binding.coordinatorLayout);
     */
 
 <#if (initDagger)>
@@ -54,7 +56,7 @@ public class ${fileName}View implements ${fileName}Contact.View {
      }
 
     @Override
-    public void onDataResponse(Object data) {
+    public void onResponse(Object data) {
     }
 
     @Override
