@@ -8,7 +8,7 @@ import ${fullPackage}.${fileName}Activity;
 import ${fullPackage}.mvp.${fileName}Model;
 import ${fullPackage}.mvp.${fileName}Presenter;
 import ${fullPackage}.mvp.${fileName}View;
-import com.shohoz.driver.retrofit.ApiInterface;
+import com.shohoz.driver.retrofit.RideApiInterface;
 import com.shohoz.driver.rx.RxSchedulers;
 
 import dagger.Module;
@@ -45,7 +45,7 @@ public class ${fileName}Module {
 
     @${fileName}Scope
     @Provides
-    ${fileName}Model provideModel(ApiInterface apiInterface) {
+    ${fileName}Model provideModel(RideApiInterface apiInterface) {
         return new ${fileName}Model(${variableName}Activity, apiInterface);
     }
 }
